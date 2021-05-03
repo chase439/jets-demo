@@ -2,22 +2,22 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV["DB_POOL"] || 5  %>
-  database: <%= ENV['DB_NAME'] || 'demo2_development' %>
-  username: <%= ENV['DB_USER'] || 'root' %>
+  database: <%= ENV['DB_NAME'] || 'demo_development' %>
+  username: <%= ENV['DB_USER'] || 'demo' %>
   password: <%= ENV['DB_PASS'] %>
-  host: <%= ENV["DB_HOST"] %>
+  host: <%= ENV["DB_HOST"] || '127.0.0.1' %>
   url: <%= ENV['DATABASE_URL'] %> # takes higher precedence than other settings
   reconnect: true
 
 development:
   <<: *default
-  database: <%= ENV['DB_NAME'] || 'demo2_development' %>
+  database: <%= ENV['DB_NAME'] || 'demo_development' %>
 
 test:
   <<: *default
-  database: demo2_test
+  database: demo_test
 
 production:
   <<: *default
-  database: demo2_production
+  database: demo_production
   url: <%= ENV['DATABASE_URL'] %>
